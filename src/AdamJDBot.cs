@@ -1,10 +1,7 @@
 ﻿/*
-    The main class of the Discord Bot (only the connection stuff is set up so far)
-    
-    The prefix for commands is "!"
-    
+    The base class of the Discord Bot 
+        
     TODO:
-    -Add the commands
     -Include a logo/image
     -Implement extra features
 */
@@ -20,7 +17,7 @@ using Newtonsoft.Json;
 
 namespace DiscordBot
 {
-    public class AdamJDBot
+    public class AdamJDBot 
     {
         //set up the DiscordClient
         public DiscordClient Client
@@ -44,7 +41,7 @@ namespace DiscordBot
             using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
             json = await sr.ReadToEndAsync().ConfigureAwait(false);
 
-            var configToken = JsonConvert.DeserializeObject<ConfigJSONToken>(json); //make the JSON file readable
+            var configToken = JsonConvert.DeserializeObject<ConfigJSONTokenPrefix>(json); //make the JSON file readable
             
             //configuration settings for the bot
             var config = new DiscordConfiguration
@@ -74,6 +71,8 @@ namespace DiscordBot
 
             //apply the command settings
             Commands = Client.UseCommandsNext(commandsConfig);
+
+            Commands.RegisterCommands<AdamJDCommands>(); //register the commands to the bot
             
             await Client.ConnectAsync(); //sync bot to the settings 
             await Task.Delay(-1); //make the bot "listen" for commands every second

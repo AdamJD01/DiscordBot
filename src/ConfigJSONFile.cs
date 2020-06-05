@@ -3,7 +3,7 @@
 namespace DiscordBot
 {
    //get the token and prefix strings in the JSON file
-   public struct ConfigJSONToken
+   public struct ConfigJSONTokenPrefix
     {
         [JsonProperty("token")]
         public string Token
