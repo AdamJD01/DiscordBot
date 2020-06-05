@@ -27,7 +27,7 @@ namespace DiscordBot
             Console.WriteLine("The command 'test' is working"); //for debugging
         }
 
-        //A command to add numbers, the user inputs two numbers and the bot adds them up
+        //A command to add numbers, the user inputs two numbers and the bot adds them
         [Command("add")] //the command name
         [Description("A command for adding numbers")] //the command description
         
@@ -57,7 +57,7 @@ namespace DiscordBot
             Console.WriteLine("The command 'multiply' is working"); //for debugging
         }
 
-        //A command to divide numbers, the user inputs two numbers and the bot adds them up
+        //A command to divide numbers, the user inputs two numbers and the bot divides them
         [Command("divide")] //the command name
         [Description("A command for dividing numbers")] //the command description
        
