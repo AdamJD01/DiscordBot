@@ -59,7 +59,7 @@ namespace DiscordBot
 
         //A command to divide numbers, the user inputs two numbers and the bot adds them up
         [Command("divide")] //the command name
-        [Description("A command for adding numbers")] //the command description
+        [Description("A command for dividing numbers")] //the command description
        
         public async Task Divide(CommandContext commandContext, float numberOne, float numberTwo) //set up the command channel and get the numbers
         {
