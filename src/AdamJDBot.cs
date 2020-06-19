@@ -17,7 +17,7 @@ using Newtonsoft.Json;
 
 namespace DiscordBot
 {
-    public class AdamJDBot 
+    public class AdamJDBot : BaseCommandModule //extends from the BaseCommandModule to register the commands in AdamJDCommands.cs
     {
         //set up the DiscordClient
         public DiscordClient Client
