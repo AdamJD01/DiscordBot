@@ -124,7 +124,7 @@ namespace DiscordBot
         }
 
         //A command that displays a random fact, the user just needs to use the command and a random fact will appear
-        [Command("fact")]
+        [Command("fact")] //the command name
         [Description("A command for showing a random fact")] //the command description
         //
         public async Task RandomFact(CommandContext commandContext) //set up the command channel
@@ -156,6 +156,46 @@ namespace DiscordBot
                 Console.WriteLine("The command 'fact' IS NOT working");
             }
             */
+        }
+
+        //A command that generates two random numbers, both the user and the bot have a number generated at random between 0-12 and whoever is the closest wins
+        [Command("randomNumbers")] //the command name
+        [Description("A command for generating two random numbers and comparing them")] //the command description
+        //
+        public async Task RandomNumbers(CommandContext commandContext)
+        {
+            //the number arrays
+            var userRandomNumber = new[] {1,2,3,4,5,6,7,8,9,10,11,12};
+            var botRandomNumber = new[] {1,2,3,4,5,6,7,8,9,10,11,12};
+
+            //the random numbers to show
+            int userRandomNumberToShow = userRandomNumber[new Random().Next(0, userRandomNumber.Length)];
+            int botRandomNumberToShow = botRandomNumber[new Random().Next(0, botRandomNumber.Length)];
+
+            //the string that shows the numbers to the user
+            string FinalNumbersToShow = "Your number is " + userRandomNumberToShow.ToString() + " and my random number is " + botRandomNumberToShow.ToString();
+
+            //the string that determines if the user has won, the bot has won or if it is a draw
+            string Outcome = "";
+
+            if (userRandomNumberToShow > botRandomNumberToShow)
+            {
+                Outcome = "You have a higher number than me so you win";
+            }
+
+            else if (botRandomNumberToShow > userRandomNumberToShow)
+            {
+                Outcome = "You have a lower number than me so you lose";
+            }
+
+            else if (userRandomNumberToShow == botRandomNumberToShow)
+            {
+                Outcome = "You have the same number as me so it's a draw";
+            }
+
+            //output the result to Discord
+            await commandContext.Channel.SendMessageAsync(FinalNumbersToShow.ToString()).ConfigureAwait(false); 
+            await commandContext.Channel.SendMessageAsync(Outcome.ToString()).ConfigureAwait(false);
         }
     }
 }
